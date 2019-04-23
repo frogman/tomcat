@@ -1,0 +1,57 @@
+List all tomcat packages installed
+rpm -ql tomcat
+output:
+/etc/logrotate.d/tomcat
+/etc/sysconfig/tomcat
+
+Cheatsheets: 
+http://khaidoan.wikidot.com/tomcat-cheatsheet
+http://www.darksleep.com/notablog/articles/Tomcat_Admin_Cheatsheet
+
+Tomcat Directory Layout
+/bin Stores executable files for Windows/*nix systems to start and stop server.
+/conf Stores configuration files.
+/lib Stores libraries to share between all applications. By default, only Tomcat libraries are in this directory.
+/logs Stores Tomcat log files.
+/temp Stores temporary files created using the Java File API.
+/webapps Deploys .war files or exploded web applications.
+/work Stores intermediate files (such as compiled JSP files) during its work.
+
+ Ports Tomcat Uses
+    8080, HTTP
+    8443, HTTPS
+    8005, shutdown service (disable this, see Standard HTTP/HTTPS ports and Root Permissions, below)
+    8009, AJP connector, tomcat's half of mod_proxy_ajp, (not recommended for performance)
+    use netstat -nlp to check for other processes using these ports
+    edit ports in tomcat/conf/server.xml Server/Service/Connector tags
+        except for shutdown port, in tomcat/conf/server.xml Server tag
+        disable shutdown port (set to "-1"), use kill -15 instead 
+    to run tomcat on port 80 as not-root-user, use ip tables to forward port 80 to 8080
+    for more running tomcat on port 80, see
+    Jason Brittain's blog
+
+Scripts In tomcat/bin
+    tomcat/bin/catalina.sh does the real work
+    tomcat/bin/startup.sh to start tomcat, invokes catalina.sh
+    tomcat/bin/shutdown.sh to stop tomcat, invokes catalina.sh
+    tomcat/bin/version.sh to list tomcat-specific environment variables and version numbers, invokes catalina.sh 
+
+Logs In tomcat/logs
+    typically date-stamped, rolled over each time restarted
+    STDOUT (main tomcat server stuff) in tomcat/logs/catalina.out
+    rollover STDOUT logs in tomcat/logs/catalina._yyyy-mm-dd_.log
+    individual webapps in tomcat/logs/_webappname_._yyyy-mm-dd_.log 
+
+Config Files In Tomcat (mostly in tomcat/conf) you usually do mess with
+    tomcat/conf/server.xml, controls tomcat server-level stuff, like ports
+    tomcat/conf/tomcat-users.xml, edit to insert users for tomcat manager app
+    tomcat/webapps/_webappname_/WEB-INF/web.xml, webapp-internal configs for a specific webapp
+    tomcat/conf/Catalina/localhost/_webappname_.xml, server-level configs for a specific webapp
+    auto-created when tomcat is started, using tomcat/webapps/_webappname_/META-INF/context.xml if present, else default context values in tomcat/conf/context.xml 
+
+Config Files In tomcat/conf you usually don't mess with
+    tomcat/conf/context.xml, default values for server-level webapp configs, seldom changed, overridden by webapp-specific context xml file (see above)
+    tomcat/conf/web.xml, default values for webapp configs, seldom changed, overridden by webapp-specific web.xml file (see above)
+    tomcat/conf/logging.properties, controls tomcat logging details, seldom changed
+    tomcat/conf/catalina.properties, tomcat internal classloader configs, don't mess with it.
+    tomcat/conf/catalina.policy, tomcat internal security policy, don't mess with it. 
