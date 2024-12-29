@@ -2,7 +2,7 @@
 
 sequenceDiagram
     autonumber
-    actor user as User<br/>aka Holder
+    actor user as Benutzer<br/>Inhaber
     participant wallet as Wallet 
     participant psp as ASPSP<br/>aka Issuer & Verifier
 
