@@ -6,7 +6,7 @@ sequenceDiagram
     participant wallet as RaiWallet 
     participant psp as Bank<br/>Aussteller und Prüfer
 
-    Note over psp: Out-of-band payment initiation
+    Note over psp: Zahlungsinitiierung
     rect rgb(100, 150, 100)
     note over wallet, psp: OpenID4VP
     psp ->> wallet: Authorization Request(transaction_data)
