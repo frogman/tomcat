@@ -8,12 +8,12 @@ sequenceDiagram
 
     Note over psp: Zahlungsinitiierung
     rect rgb(100, 150, 100)
-    note over wallet, psp: OpenID4VP
-    psp ->> wallet: Authorization Request(transaction_data)
+    note over wallet, psp: Protokoll für überprüfbare Präsentationen
+    psp ->> wallet: Autorisierungsanfrage (Transaktionsdaten)
     activate wallet
-    wallet ->> user: SHOW approval dialoge
-    user ->> user: review transaction
-    user ->> wallet: approves presentation
+    wallet ->> user: Genehmigungsdialog anzeigen
+    user ->> user: Überprüfung der Transaktion
+    user ->> wallet: Benutzer genehmigt Präsentation
     wallet -->> psp: POST Authorization Response(P2Pay)
     psp -->> wallet: RESP OK, redirect_uri
     end
