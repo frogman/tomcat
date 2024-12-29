@@ -14,13 +14,13 @@ sequenceDiagram
     wallet ->> user: Genehmigungsdialog anzeigen
     user ->> user: Überprüfung der Transaktion
     user ->> wallet: Benutzer genehmigt Präsentation
-    wallet -->> psp: POST Authorization Response(P2Pay)
-    psp -->> wallet: RESP OK, redirect_uri
+    wallet -->> psp: POST-Autorisierungsantwort(P2P-Zahlung)
+    psp -->> wallet: Antwort OK, redirect_uri Adresse
     end
-    wallet -->> user: SHOW presentation status
+    wallet -->> user: Präsentationsstatus anzeigen
     deactivate wallet
-    wallet ->> psp: GET PSP metadata
-    psp -->> wallet: RESP PSP metadata, payment_status_uri
+    wallet ->> psp: Abruf der Metadaten des Zahlungsdienstleisters
+    psp -->> wallet: Antwort Zahlungsdienstleister Metadaten, payment_status_uri
     psp ->> psp: verify P2Pay and execute transaction
     loop
     wallet ->> psp: GET payment-status(a2pay-id, payment-id)
