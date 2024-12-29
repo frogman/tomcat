@@ -21,7 +21,7 @@ sequenceDiagram
     deactivate wallet
     wallet ->> psp: Abruf der Metadaten des Zahlungsdienstleisters
     psp -->> wallet: Antwort Zahlungsdienstleister Metadaten, status_Adresse
-    psp ->> psp: Überprüfung des Zahlungsdienstleisters und Durchführung der Transaktion
+    psp ->> psp: Überprüfung des Zahlungsdienstleisters <br/> Durchführung der Transaktion
     loop
     wallet ->> psp: GET payment-status(a2pay-id, payment-id)
 
