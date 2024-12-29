@@ -15,19 +15,19 @@ sequenceDiagram
     user ->> user: Überprüfung der Transaktion
     user ->> wallet: Benutzer genehmigt Präsentation
     wallet -->> psp: POST-Autorisierungsantwort(P2P-Zahlung)
-    psp -->> wallet: Antwort OK, redirect_uri Adresse
+    psp -->> wallet: Antwort OK, redirect_uri Web_Adresse
     end
     wallet -->> user: Präsentationsstatus anzeigen
     deactivate wallet
     wallet ->> psp: Abruf der Metadaten des Zahlungsdienstleisters
-    psp -->> wallet: Antwort Zahlungsdienstleister Metadaten, status_Adresse
+    psp -->> wallet: Antwort Zahlungsdienstleister Metadaten, status_Web_Adresse
     psp ->> psp: Überprüfung des Zahlungsdienstleisters <br/> Durchführung der Transaktion
     loop
-    wallet ->> psp: GET payment-status(a2pay-id, payment-id)
+    wallet ->> psp: Zahlungsstatus abrufen(Zahlungsschema-id, Zahlungs-id)
 
-    psp -->> wallet: RESP payment status 
+    psp -->> wallet: Antwort Zahlungsstatus 
     end
-    wallet -->> user: SHOW payment status
-    wallet ->> psp: GET follow redirect_uri
+    wallet -->> user: Zahlungsstatus anzeigen
+    wallet ->> psp: Web Adresse für die Weiterleitung erhalten
 
 ```
