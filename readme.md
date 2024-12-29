@@ -7,7 +7,7 @@ sequenceDiagram
     participant psp as Bank<br/>Aussteller und Prüfer
 
     Note over psp: Zahlungsinitiierung
-    rect rgb(100, 150, 100)
+    rect rgb(143, 153, 222)
     note over wallet, psp: Protokoll für überprüfbare Präsentationen
     psp ->> wallet: Autorisierungsanfrage (Transaktionsdaten)
     activate wallet
