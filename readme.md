@@ -3,8 +3,8 @@
 sequenceDiagram
     autonumber
     actor user as Benutzer<br/>Inhaber
-    participant wallet as Wallet 
-    participant psp as ASPSP<br/>aka Issuer & Verifier
+    participant wallet as RaiWallet 
+    participant psp as Bank<br/>Aussteller und Prüfer
 
     Note over psp: Out-of-band payment initiation
     rect rgb(100, 150, 100)
