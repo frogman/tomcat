@@ -11,8 +11,8 @@ sequenceDiagram
     note over wallet, psp: Protokoll für überprüfbare Verifikation
     user ->> psp: Anfrage (Sparkonto)
     activate wallet
-    wallet ->> user: Genehmigungsdialog anzeigen
-    user ->> user: Überprüfung der Transaktion
+    psp ->> wallet: Authentifizierungsanfrage
+    wallet ->> user: Benutzer genehmigt Präsentation
     user ->> wallet: Benutzer genehmigt Präsentation
     wallet -->> psp: POST-Autorisierungsantwort(P2P-Zahlung)
     psp -->> wallet: Antwort OK, redirect_uri Web_Adresse
