@@ -19,15 +19,10 @@ sequenceDiagram
     end
     wallet -->> user: Präsentationsstatus anzeigen
     deactivate wallet
-    wallet ->> psp: Abruf der Metadaten des Zahlungsdienstleisters
-    psp -->> wallet: Antwort Zahlungsdienstleister Metadaten, status_Web_Adresse
-    psp ->> psp: Überprüfung des Zahlungsdienstleisters <br/> Durchführung der Transaktion
-    loop
-    wallet ->> psp: Zahlungsstatus abrufen(Zahlungsschema-id, Zahlungs-id)
-
-    psp -->> wallet: Antwort Zahlungsstatus 
+    user ->> wallet: Sparkonto eröffnen abschließen
+    wallet -->> psp: Antwort Benutzer an die Bank
+    psp ->> psp: Genehmigung überprüfen lassen <br/> Sparkonto-Eröffnung
+    psp ->> user: Nutzer informieren und Zugang gewähren
     end
-    wallet -->> user: Zahlungsstatus anzeigen
-    wallet ->> psp: Web Adresse für die Weiterleitung erhalten
 
 ```
