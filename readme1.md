@@ -20,9 +20,9 @@ sequenceDiagram
     wallet -->> user: Präsentationsstatus anzeigen
     deactivate wallet
     user ->> wallet: Sparkonto eröffnen abschließen
-    wallet -->> psp: Antwort Benutzer an die Bank
+    wallet ->> psp: Antwort Benutzer an die Bank
     psp ->> psp: Genehmigung überprüfen lassen <br/> Sparkonto-Eröffnung
     psp ->> user: Nutzer informieren und Zugang gewähren
-    end
+    
 
 ```
