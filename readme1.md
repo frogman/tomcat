@@ -14,8 +14,8 @@ sequenceDiagram
     psp ->> wallet: Authentifizierungsanfrage
     user ->> wallet: Benutzer genehmigt Präsentation mit VCs
     wallet ->> psp: Darstellung der Daten in Form von VCs
-    wallet -->> psp: POST-Autorisierungsantwort(P2P-Zahlung)
-    psp -->> wallet: Antwort OK, redirect_uri Web_Adresse
+    psp -->> wallet: POST-Autorisierungsantwort
+    psp -->> wallet: Antwort KYC OK, redirect_uri Web_Adresse
     end
     wallet -->> user: Präsentationsstatus anzeigen
     deactivate wallet
