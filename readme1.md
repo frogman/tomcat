@@ -4,7 +4,7 @@ sequenceDiagram
     autonumber
     actor user as Benutzer<br/>Inhaber
     participant wallet as RaiWallet 
-    participant psp as Bank<br/>Bank
+    participant psp as Bank
 
     Note over psp: Online Banking
     rect rgb(143, 153, 222)
