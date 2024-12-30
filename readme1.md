@@ -12,8 +12,8 @@ sequenceDiagram
     user ->> psp: Anfrage (Sparkonto)
     activate wallet
     psp ->> wallet: Authentifizierungsanfrage
-    user ->> wallet: Benutzer genehmigt Präsentation
-    user ->> wallet: Benutzer genehmigt Präsentation
+    user ->> wallet: Benutzer genehmigt Präsentation mit VCs
+    wallet ->> psp: Darstellung der Daten in Form von VCs
     wallet -->> psp: POST-Autorisierungsantwort(P2P-Zahlung)
     psp -->> wallet: Antwort OK, redirect_uri Web_Adresse
     end
