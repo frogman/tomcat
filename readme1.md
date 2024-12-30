@@ -4,12 +4,12 @@ sequenceDiagram
     autonumber
     actor user as Benutzer<br/>Inhaber
     participant wallet as RaiWallet 
-    participant psp as Bank<br/>Aussteller und Prüfer
+    participant psp as Bank<br/>Bank
 
-    Note over psp: Zahlungsinitiierung
+    Note over psp: Online Banking
     rect rgb(143, 153, 222)
     note over wallet, psp: Protokoll für überprüfbare Präsentationen
-    psp ->> wallet: Autorisierungsanfrage (Transaktionsdaten)
+    wallet ->> psp: Anfrage (Sparkonto)
     activate wallet
     wallet ->> user: Genehmigungsdialog anzeigen
     user ->> user: Überprüfung der Transaktion
