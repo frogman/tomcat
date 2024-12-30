@@ -8,8 +8,8 @@ sequenceDiagram
 
     Note over psp: Online Banking
     rect rgb(143, 153, 222)
-    note over wallet, psp: Protokoll für überprüfbare Präsentationen
-    wallet ->> psp: Anfrage (Sparkonto)
+    note over wallet, psp: Protokoll für überprüfbare Verifikation
+    user ->> psp: Anfrage (Sparkonto)
     activate wallet
     wallet ->> user: Genehmigungsdialog anzeigen
     user ->> user: Überprüfung der Transaktion
